@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# YOUR PRIVATE DATA — never commit these.
+# ---------------------------------------------------------------------------
+# Your identity, resume bullets, and application answers.
+# Created by: cp -r profile.example profile
+profile/
+
+# Generated resumes. Every file here is a complete personal document.
+outputs/*
+!outputs/.gitkeep
+
+# Your application history.
+applied_jobs.txt
+
+# ---------------------------------------------------------------------------
+# BROWSER SESSION DATA — credential-equivalent. Never commit.
+# ---------------------------------------------------------------------------
+# The scripts drive a Chrome profile that you logged into by hand. That profile
+# directory belongs in ~/.config/, not here. This is a backstop in case one ever
+# gets created inside the repo.
+*-chrome-profile/
+**/Cookies
+**/Login Data
+**/Local State
+
+# Playwright MCP artifact dumps: page snapshots and console logs from live
+# browsing sessions. Not needed by anything; they leak what you browsed.
+.playwright-mcp/
+
+# ---------------------------------------------------------------------------
+# Tooling and OS junk
+# ---------------------------------------------------------------------------
+.codegraph/
+.claude/settings.local.json
+.codex/config.toml
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+
+.DS_Store
+*~
+~$*

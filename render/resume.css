@@ -1,0 +1,89 @@
+@page {
+  size: letter;
+  margin: 0.4in 0.55in;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 9.8pt;
+  line-height: 1.18;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  margin: 0 0 3px 0;
+  padding: 0;
+}
+
+/* Contact line under name */
+h1 + p {
+  text-align: center;
+  font-size: 8.5pt;
+  margin: 0 0 6px 0;
+}
+
+hr {
+  border: none;
+  border-top: 0.5px solid #ccc;
+  margin: 2px 0;
+}
+
+h2 {
+  font-size: 10pt;
+  font-weight: bold;
+  color: #1a5ca8;
+  border-bottom: 1px solid #1a5ca8;
+  margin: 4px 0 1px 0;
+  padding-bottom: 1px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Role / company line */
+h3, p strong:first-child {
+  font-size: 9.8pt;
+  margin: 3px 0 0 0;
+}
+
+p {
+  margin: 1px 0;
+}
+
+ul {
+  margin: 1px 0 2px 0;
+  padding-left: 13px;
+}
+
+li {
+  margin: 0.5px 0;
+  line-height: 1.18;
+}
+
+/* Right-aligned meta (dates, locations) */
+.meta {
+  float: right;
+  font-weight: normal;
+  color: #000;
+}
+
+/* Clear floats after meta lines */
+p:has(.meta) {
+  overflow: hidden;
+}
+
+/* Education lines */
+#education p {
+  margin: 1px 0;
+}
+
+a {
+  color: #1a5ca8;
+  text-decoration: none;
+}

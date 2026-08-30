@@ -1,0 +1,5 @@
+# Rendering pipeline (render/generate_outputs.py)
+python-docx>=1.1.0   # builds the .docx
+pymupdf>=1.24.0      # measures page fill so the resume lands on exactly one page
+
+# tools/make_tailored_resume.py and tools/pii_scan.py are stdlib-only.

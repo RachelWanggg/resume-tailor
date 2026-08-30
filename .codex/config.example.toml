@@ -1,0 +1,52 @@
+# Codex MCP config — optional.
+#
+# The apply scripts in scripts/ drive Chrome over the DevTools Protocol directly and need none of
+# this. Use it only if you want Codex itself to drive a browser for a site the scripts do not cover.
+#
+# To use:  cp .codex/config.example.toml .codex/config.toml
+# .codex/config.toml is gitignored, because the profile path below names your home directory.
+#
+# Replace YOUR_USERNAME, or use a path under $HOME. The user-data-dir must point at the Chrome
+# profile you logged into by hand — see the README's "Setting up auto-apply" section. That
+# directory holds live session cookies: keep it outside this repo and never commit it.
+
+[mcp_servers.playwright]
+command = "npx"
+args = [
+    "@playwright/mcp@latest",
+    "--browser",
+    "chrome",
+    "--user-data-dir",
+    "/Users/YOUR_USERNAME/.config/handshake-chrome-profile",
+]
+
+# Pre-approving these means Codex can click, type, and upload without asking each time.
+# That is convenient and it is a real grant of authority over a logged-in browser session.
+# Remove any you would rather be asked about — browser_file_upload and browser_run_code_unsafe
+# are the two worth thinking hardest about.
+[mcp_servers.playwright.tools.browser_navigate]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_click]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_type]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_press_key]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_select_option]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_fill_form]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_evaluate]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_tabs]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_file_upload]
+approval_mode = "approve"

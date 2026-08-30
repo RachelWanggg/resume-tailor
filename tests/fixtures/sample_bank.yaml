@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "format_note": "Test fixture. Small, stable, and unrelated to any real person — the scorer tests assert on these ids, so changing them breaks the suite.",
+  "header": {
+    "name": "Test Fixture",
+    "contact_line": "fixture@example.com | 555-0100 | <<CITY, ST>>"
+  },
+  "hard_facts": [],
+  "education": [
+    { "school": "Fixture University", "degree": "MS in Computer Science", "dates": "Sep. 2024 – Jun. 2026" }
+  ],
+  "roles": [
+    { "id": "role_1", "name": "Fixture Corp", "city": "Testville, TX", "dates": "Jun. 2025 – Present" }
+  ],
+  "projects": [],
+  "skills_master": {
+    "Agentic AI & LLM": ["LLM evaluation & golden sets", "RAG"],
+    "Backend & APIs": ["FastAPI", "REST APIs"],
+    "Data & Pipelines": ["Airflow", "ETL/ELT"],
+    "Languages": ["Python", "Go", "SQL"]
+  },
+  "skills_lead_category_by_role_family": {
+    "ai_ml": "Agentic AI & LLM",
+    "backend": "Backend & APIs",
+    "full_stack": "Backend & APIs",
+    "sre_platform": "Backend & APIs",
+    "data_engineer": "Data & Pipelines",
+    "security": "Backend & APIs"
+  },
+  "bullets": [
+    {
+      "id": "fx_llm_evaluation",
+      "status": "approved",
+      "source": "Fixture Corp",
+      "source_role": "AI Engineer Intern",
+      "role_families": ["ai_ml"],
+      "technologies": ["LLM evaluation", "Python"],
+      "themes": ["golden set", "grounding", "unsupported claims", "factual accuracy"],
+      "locked_metrics": ["18% to 7%"],
+      "text": "Built a golden-set evaluation harness measuring grounding and factual accuracy on every release, blocking a merge when unsupported claims regressed, cutting ungrounded output from 18% to 7% over six weeks."
+    },
+    {
+      "id": "fx_cache_latency",
+      "status": "approved",
+      "source": "Fixture Corp",
+      "source_role": "Backend Engineer Intern",
+      "role_families": ["backend"],
+      "technologies": ["Redis", "PostgreSQL"],
+      "themes": ["cache-aside", "invalidation", "read-after-write consistency", "latency"],
+      "locked_metrics": ["233ms to 3ms"],
+      "text": "Added a cache-aside Redis layer over the dashboard's PostgreSQL reads with explicit invalidation on write to preserve read-after-write consistency, taking API latency from 233ms to 3ms."
+    },
+    {
+      "id": "fx_pipeline_incremental",
+      "status": "approved",
+      "source": "Fixture Corp",
+      "source_role": "Data Engineer Intern",
+      "role_families": ["data_engineer"],
+      "technologies": ["Airflow", "SQL"],
+      "themes": ["incremental ingestion", "watermarks", "ETL", "backfill"],
+      "locked_metrics": ["4 hours to 15 minutes"],
+      "text": "Converted a full-table nightly load into an incremental Airflow DAG keyed on per-source watermarks, which took the nightly ingestion window from 4 hours to 15 minutes without changing the warehouse schema."
+    },
+    {
+      "id": "fx_dead_letter",
+      "status": "approved",
+      "source": "Fixture Corp",
+      "source_role": "Software Engineer Intern",
+      "role_families": ["sre_platform", "backend"],
+      "technologies": ["Go", "AWS SQS"],
+      "themes": ["dead-letter queue", "retries", "silent failure", "observability"],
+      "locked_metrics": ["3 silent failures"],
+      "text": "Routed undecodable messages to a dead-letter queue with the original payload and decode error attached, surfacing 3 silent failures that had previously been dropped without any alert or log entry."
+    },
+    {
+      "id": "fx_authz_scoping",
+      "status": "approved",
+      "source": "Fixture Corp",
+      "source_role": "Software Engineer Intern",
+      "role_families": ["security", "backend"],
+      "technologies": ["PostgreSQL", "FastAPI"],
+      "themes": ["authorization", "least privilege", "audit logging", "access control"],
+      "locked_metrics": ["9 endpoints"],
+      "text": "Scoped every data-access path to the requesting tenant at the query layer rather than in view code, closing an authorization gap that spanned 9 endpoints and adding an audit record to each of them."
+    },
+    {
+      "id": "fx_frontend_perf",
+      "status": "approved",
+      "source": "Fixture Corp",
+      "source_role": "Full-Stack Engineer Intern",
+      "role_families": ["full_stack"],
+      "technologies": ["React", "TypeScript"],
+      "themes": ["bundle size", "code splitting", "client performance", "UI"],
+      "locked_metrics": ["2.1s to 900ms"],
+      "text": "Split the dashboard bundle along route boundaries and deferred the charting library until first use, taking largest-contentful-paint on the landing view from 2.1s to 900ms on a throttled connection."
+    }
+  ]
+}

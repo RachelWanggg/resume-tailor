@@ -1,0 +1,707 @@
+{
+  "schema_version": 2,
+  "format_note": "JSON syntax is valid YAML 1.2 and keeps this file dependency-free.",
+  "approval_policy": "Only bullets you have explicitly approved may be stored here. A tailored resume is assembled from this file; it is never edited into existence from a draft.",
+  "_EXAMPLE_NOTICE": "Everything below describes JORDAN RIVERA, a fictional person. The companies, schools, projects, metrics, and contact details are invented and do not refer to any real person or organization. Replace all of it with your own before using this repo. See README section 'Fill in your profile'.",
+  "header": {
+    "name": "Jordan Rivera",
+    "contact_line": "jordan.rivera@example.com | 555-0142 | linkedin.com/in/jordan-rivera-example | github.com/example-user | <<CITY, ST>>",
+    "note": "Swap <<CITY, ST>> to the JD's city per JD. Past-job cities below are frozen and never change."
+  },
+  "hard_facts": [
+    "BS is in Statistics, not Computer Science. A JD requiring a four-year degree in Computer Science is a HARD MISMATCH. Report it; do not paper over it.",
+    "All three roles are internships. Never claim to have led a team.",
+    "This is an example of how to record facts that must never be edited to fit a JD. Write yours the same way: short, checkable, and stated as a constraint on the writer."
+  ],
+  "education": [
+    {
+      "school": "Northlake University",
+      "degree": "MS in Computer Science",
+      "dates": "Sep. 2024 – Jun. 2026"
+    },
+    {
+      "school": "Meridian State College",
+      "degree": "BS in Statistics",
+      "dates": "Sep. 2019 – Jun. 2023"
+    }
+  ],
+  "roles": [
+    {
+      "id": "role_1",
+      "name": "Cobalt Health (clinical billing SaaS)",
+      "city": "Austin, TX",
+      "dates": "Jun. 2025 – Present"
+    },
+    {
+      "id": "role_2",
+      "name": "Northwind Logistics (freight routing platform)",
+      "city": "Austin, TX",
+      "dates": "Sep. 2024 – May 2025"
+    },
+    {
+      "id": "role_3",
+      "name": "Beacon IoT Systems (industrial sensor telemetry)",
+      "city": "Denver, CO",
+      "dates": "Jun. 2023 – Aug. 2024"
+    }
+  ],
+  "projects": [
+    {
+      "id": "queuelite",
+      "name": "queuelite — Postgres-backed job queue",
+      "context": "Open source, 340 GitHub stars",
+      "dates": null
+    },
+    {
+      "id": "anomaly_dashboard",
+      "name": "Sensor Rule Replay Dashboard",
+      "context": "Northlake University, Systems Lab",
+      "dates": "Jan. 2025 – Apr. 2025"
+    },
+    {
+      "id": "costcli",
+      "name": "costcli — cloud spend reconciler",
+      "context": "Open source",
+      "dates": "Oct. 2024 – Dec. 2024"
+    }
+  ],
+  "skills_master": {
+    "Agentic AI & LLM": [
+      "LLM extraction pipelines",
+      "structured output & schema validation",
+      "RAG",
+      "prompt engineering",
+      "LLM evaluation & golden sets",
+      "human-in-the-loop review",
+      "OpenAI / Claude APIs"
+    ],
+    "ML & Data Science": [
+      "scikit-learn",
+      "time-series decomposition",
+      "anomaly detection",
+      "model evaluation",
+      "pandas",
+      "NumPy",
+      "statistical testing"
+    ],
+    "Backend & APIs": [
+      "FastAPI",
+      "Django",
+      "Go",
+      "REST APIs",
+      "gRPC",
+      "Celery",
+      "React",
+      "Next.js"
+    ],
+    "Data & Pipelines": [
+      "SQL",
+      "ETL/ELT",
+      "Airflow",
+      "dbt",
+      "data modeling",
+      "incremental ingestion",
+      "data quality testing",
+      "dead-letter queues"
+    ],
+    "Databases": [
+      "PostgreSQL",
+      "TimescaleDB",
+      "Redis",
+      "SQLite"
+    ],
+    "Cloud & Platform": [
+      "AWS (Lambda, S3, RDS, SQS, Secrets Manager)",
+      "Docker",
+      "Terraform",
+      "Prometheus",
+      "Grafana",
+      "GitHub Actions"
+    ],
+    "Practices & Tooling": [
+      "Git",
+      "Linux",
+      "Bash",
+      "CI/CD",
+      "pytest",
+      "load testing",
+      "observability",
+      "mTLS"
+    ],
+    "Languages": [
+      "Python",
+      "Go",
+      "TypeScript",
+      "JavaScript",
+      "SQL",
+      "Bash"
+    ]
+  },
+  "skills_lead_category_by_role_family": {
+    "ai_ml": "Agentic AI & LLM",
+    "backend": "Backend & APIs",
+    "full_stack": "Backend & APIs",
+    "sre_platform": "Cloud & Platform",
+    "data_engineer": "Data & Pipelines",
+    "security": "Practices & Tooling"
+  },
+  "bullets": [
+    {
+      "id": "cobalt_claim_extraction",
+      "status": "approved",
+      "source": "Cobalt Health",
+      "source_role": "Software Engineer Intern / AI Engineer Intern",
+      "role_families": [
+        "ai_ml",
+        "backend"
+      ],
+      "technologies": [
+        "LLM extraction",
+        "JSON Schema",
+        "Python"
+      ],
+      "themes": [
+        "structured output",
+        "validation",
+        "human review",
+        "document parsing"
+      ],
+      "locked_metrics": [
+        "4.1% to 0.6%"
+      ],
+      "text": "Replaced a regex parser for insurance remittance PDFs with an LLM extraction step validated against a JSON schema, routing low-confidence fields to a human queue instead of writing them silently, **cutting mis-posted claims from 4.1% to 0.6%**."
+    },
+    {
+      "id": "cobalt_eval_harness",
+      "status": "approved",
+      "source": "Cobalt Health",
+      "source_role": "AI Engineer Intern",
+      "role_families": [
+        "ai_ml"
+      ],
+      "technologies": [
+        "evaluation harness",
+        "Python"
+      ],
+      "themes": [
+        "golden set",
+        "regression testing",
+        "model evaluation",
+        "release gating"
+      ],
+      "locked_metrics": [
+        "480 labeled remittance documents"
+      ],
+      "text": "Built a golden-set evaluation harness over 480 labeled remittance documents that blocks a model or prompt change from merging when field-level accuracy drops, which caught a regression introduced by a vendor model update two days after its release."
+    },
+    {
+      "id": "cobalt_retry_backoff",
+      "status": "approved",
+      "source": "Cobalt Health",
+      "source_role": "Software Engineer Intern",
+      "role_families": [
+        "backend",
+        "sre_platform"
+      ],
+      "technologies": [
+        "Python",
+        "exponential backoff"
+      ],
+      "themes": [
+        "silent failure",
+        "retries",
+        "error handling",
+        "third-party integration"
+      ],
+      "locked_metrics": [
+        "92%"
+      ],
+      "text": "Traced intermittent claim-submission failures to a clearinghouse that returned HTTP 200 with an error body, then added response-body inspection and bounded exponential backoff, **removing 92% of manual resubmissions**."
+    },
+    {
+      "id": "cobalt_audit_trail",
+      "status": "approved",
+      "source": "Cobalt Health",
+      "source_role": "Software Engineer Intern",
+      "role_families": [
+        "security",
+        "backend"
+      ],
+      "technologies": [
+        "PostgreSQL",
+        "Django"
+      ],
+      "themes": [
+        "audit logging",
+        "access control",
+        "compliance",
+        "observability"
+      ],
+      "locked_metrics": [
+        "11 endpoints"
+      ],
+      "text": "Instrumented every read of patient billing records with an append-only audit trail keyed by actor and stated purpose, closing a control gap the SOC 2 readiness review had flagged across 11 endpoints that previously logged nothing."
+    },
+    {
+      "id": "cobalt_reviewer_console",
+      "status": "approved",
+      "source": "Cobalt Health",
+      "source_role": "Full-Stack Engineer Intern",
+      "role_families": [
+        "full_stack",
+        "ai_ml"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript"
+      ],
+      "themes": [
+        "human-in-the-loop",
+        "internal tooling",
+        "UI",
+        "review workflow"
+      ],
+      "locked_metrics": [
+        "6 minutes to 90 seconds"
+      ],
+      "text": "Shipped the console where billing staff resolve low-confidence extractions, replacing a spreadsheet handoff with an inline diff of model output against the source document, **taking median review time from 6 minutes to 90 seconds**."
+    },
+    {
+      "id": "cobalt_secrets_migration",
+      "status": "approved",
+      "source": "Cobalt Health",
+      "source_role": "Software Engineer Intern / DevOps Intern",
+      "role_families": [
+        "security",
+        "sre_platform"
+      ],
+      "technologies": [
+        "AWS Secrets Manager",
+        "Terraform"
+      ],
+      "themes": [
+        "secret management",
+        "IAM",
+        "credential rotation",
+        "remediation"
+      ],
+      "locked_metrics": [
+        "23 service credentials"
+      ],
+      "text": "Migrated 23 service credentials out of environment files committed to the deploy repository into AWS Secrets Manager with per-service IAM scoping, then rotated every one that had been exposed in the git history."
+    },
+    {
+      "id": "northwind_incremental_etl",
+      "status": "approved",
+      "source": "Northwind Logistics",
+      "source_role": "Data Engineer Intern",
+      "role_families": [
+        "data_engineer",
+        "backend"
+      ],
+      "technologies": [
+        "Airflow",
+        "Python",
+        "PostgreSQL"
+      ],
+      "themes": [
+        "incremental ingestion",
+        "watermarks",
+        "pipeline reliability",
+        "batch processing"
+      ],
+      "locked_metrics": [
+        "9 hours to 22 minutes"
+      ],
+      "text": "Rebuilt nightly carrier-rate ingestion as an incremental Airflow DAG with per-source watermarks after a single malformed CSV forced a full reload of every historical partition, **taking the nightly run from 9 hours to 22 minutes**."
+    },
+    {
+      "id": "northwind_dbt_tests",
+      "status": "approved",
+      "source": "Northwind Logistics",
+      "source_role": "Data Engineer Intern / Analytics Engineer Intern",
+      "role_families": [
+        "data_engineer"
+      ],
+      "technologies": [
+        "dbt",
+        "SQL"
+      ],
+      "themes": [
+        "data quality",
+        "testing",
+        "freshness",
+        "upstream failures"
+      ],
+      "locked_metrics": [
+        "34 dbt carrier-rate models",
+        "3 upstream feed outages"
+      ],
+      "text": "Added schema and freshness tests across 34 dbt carrier-rate models so the pipeline fails on null primary keys and stale partitions rather than surfacing the gap to analysts, which caught 3 upstream feed outages in the first month."
+    },
+    {
+      "id": "northwind_query_index",
+      "status": "approved",
+      "source": "Northwind Logistics",
+      "source_role": "Software Engineer Intern / Backend Engineer Intern",
+      "role_families": [
+        "backend",
+        "data_engineer"
+      ],
+      "technologies": [
+        "PostgreSQL",
+        "Django"
+      ],
+      "themes": [
+        "query optimization",
+        "latency",
+        "profiling",
+        "indexing"
+      ],
+      "locked_metrics": [
+        "1.8s to 210ms"
+      ],
+      "text": "Profiled the route-quoting endpoint, found most of its latency in a sequential scan over 12M shipment rows, and added a partial composite index on the two filtered columns, **taking p95 latency from 1.8s to 210ms**."
+    },
+    {
+      "id": "northwind_rate_cache",
+      "status": "approved",
+      "source": "Northwind Logistics",
+      "source_role": "Backend Engineer Intern",
+      "role_families": [
+        "backend",
+        "sre_platform"
+      ],
+      "technologies": [
+        "Redis",
+        "Python"
+      ],
+      "themes": [
+        "caching",
+        "cost reduction",
+        "thundering herd",
+        "third-party API"
+      ],
+      "locked_metrics": [
+        "$1,900 per month"
+      ],
+      "text": "Cached carrier rate lookups in Redis behind a single-flight fill so that a traffic spike no longer sent hundreds of duplicate requests to the same metered upstream endpoint, **cutting third-party API spend by $1,900 per month**."
+    },
+    {
+      "id": "northwind_api_versioning",
+      "status": "approved",
+      "source": "Northwind Logistics",
+      "source_role": "Backend Engineer Intern",
+      "role_families": [
+        "backend",
+        "full_stack"
+      ],
+      "technologies": [
+        "REST APIs",
+        "Django"
+      ],
+      "themes": [
+        "API design",
+        "backward compatibility",
+        "deprecation",
+        "contracts"
+      ],
+      "locked_metrics": [
+        "4 schema changes"
+      ],
+      "text": "Introduced versioned REST contracts with deprecation headers and a fixed sunset window after an unannounced field rename broke two customer integrations, letting the next 4 schema changes ship without a support ticket."
+    },
+    {
+      "id": "northwind_ci_parallel",
+      "status": "approved",
+      "source": "Northwind Logistics",
+      "source_role": "Software Engineer Intern / DevOps Intern",
+      "role_families": [
+        "sre_platform",
+        "backend"
+      ],
+      "technologies": [
+        "GitHub Actions",
+        "Docker"
+      ],
+      "themes": [
+        "CI/CD",
+        "build caching",
+        "developer velocity",
+        "test parallelism"
+      ],
+      "locked_metrics": [
+        "18 minutes to 5"
+      ],
+      "text": "Split the test suite across parallel CI jobs and cached Docker build layers keyed on the lockfile, **taking pull-request feedback time from 18 minutes to 5** and ending the practice of batching merges overnight."
+    },
+    {
+      "id": "northwind_booking_form",
+      "status": "approved",
+      "source": "Northwind Logistics",
+      "source_role": "Full-Stack Engineer Intern",
+      "role_families": [
+        "full_stack"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript"
+      ],
+      "themes": [
+        "UI",
+        "form design",
+        "conversion",
+        "client-side state"
+      ],
+      "locked_metrics": [
+        "38% to 14%"
+      ],
+      "text": "Rebuilt shipment booking as a multi-step React flow with per-step validation and drafts that survive a closed tab, after analytics showed most users abandoning the single long form partway through, **taking abandonment from 38% to 14%**."
+    },
+    {
+      "id": "beacon_ingest_batching",
+      "status": "approved",
+      "source": "Beacon IoT Systems",
+      "source_role": "Software Engineer Intern / Data Engineer Intern",
+      "role_families": [
+        "data_engineer",
+        "backend"
+      ],
+      "technologies": [
+        "TimescaleDB",
+        "Go"
+      ],
+      "themes": [
+        "ingestion",
+        "write throughput",
+        "time-series",
+        "batching"
+      ],
+      "locked_metrics": [
+        "2,400 field sensors",
+        "800 writes per second"
+      ],
+      "text": "Built the ingestion path for 2,400 field sensors reporting every 30 seconds, batching writes into TimescaleDB hypertables instead of inserting row at a time, sustaining 800 writes per second on a single node."
+    },
+    {
+      "id": "beacon_anomaly_baseline",
+      "status": "approved",
+      "source": "Beacon IoT Systems",
+      "source_role": "Data Scientist Intern / ML Engineer Intern",
+      "role_families": [
+        "ai_ml",
+        "data_engineer"
+      ],
+      "technologies": [
+        "scikit-learn",
+        "Python"
+      ],
+      "themes": [
+        "anomaly detection",
+        "time series",
+        "alert fatigue",
+        "false positives"
+      ],
+      "locked_metrics": [
+        "200 false alerts a week",
+        "weekly alert volume to 12"
+      ],
+      "text": "Trained a seasonal-decomposition baseline that flags sensor drift from expected temperature bands, replacing fixed thresholds that fired 200 false alerts a week, **bringing weekly alert volume to 12** with no true fault missed."
+    },
+    {
+      "id": "beacon_dead_letter",
+      "status": "approved",
+      "source": "Beacon IoT Systems",
+      "source_role": "Software Engineer Intern",
+      "role_families": [
+        "sre_platform",
+        "backend",
+        "data_engineer"
+      ],
+      "technologies": [
+        "Go",
+        "AWS SQS"
+      ],
+      "themes": [
+        "dead-letter queue",
+        "silent data loss",
+        "error handling",
+        "debuggability"
+      ],
+      "locked_metrics": [
+        "6 hours of readings"
+      ],
+      "text": "Routed unparseable sensor payloads to a dead-letter queue carrying both the original bytes and the decode error, after a firmware change silently dropped 6 hours of readings and left no record of what had failed or why."
+    },
+    {
+      "id": "beacon_terraform_staging",
+      "status": "approved",
+      "source": "Beacon IoT Systems",
+      "source_role": "DevOps Intern / Platform Engineer Intern",
+      "role_families": [
+        "sre_platform"
+      ],
+      "technologies": [
+        "Terraform",
+        "AWS"
+      ],
+      "themes": [
+        "infrastructure as code",
+        "config drift",
+        "reproducibility",
+        "environments"
+      ],
+      "locked_metrics": [
+        "12 minutes"
+      ],
+      "text": "Codified the staging environment in Terraform after a hand-built instance drifted from production and hid a configuration bug for a week, letting the team rebuild the full stack from scratch in 12 minutes."
+    },
+    {
+      "id": "beacon_device_mtls",
+      "status": "approved",
+      "source": "Beacon IoT Systems",
+      "source_role": "Software Engineer Intern / Security Engineer Intern",
+      "role_families": [
+        "security",
+        "sre_platform"
+      ],
+      "technologies": [
+        "mTLS",
+        "Go"
+      ],
+      "themes": [
+        "device authentication",
+        "certificate rotation",
+        "blast radius",
+        "PKI"
+      ],
+      "locked_metrics": [
+        "2,400 deployed sensors",
+        "90-day rotation"
+      ],
+      "text": "Moved device authentication from a shared API key to per-device mTLS certificates on a 90-day rotation, so a single compromised gateway no longer exposed the fleet, covering all 2,400 deployed sensors."
+    },
+    {
+      "id": "beacon_observability",
+      "status": "approved",
+      "source": "Beacon IoT Systems",
+      "source_role": "Software Engineer Intern / SRE Intern",
+      "role_families": [
+        "sre_platform",
+        "backend"
+      ],
+      "technologies": [
+        "Prometheus",
+        "Grafana"
+      ],
+      "themes": [
+        "observability",
+        "metrics",
+        "on-call",
+        "incident response"
+      ],
+      "locked_metrics": [
+        "40 minutes to 9"
+      ],
+      "text": "Instrumented the ingestion path with counters for decode failures, queue depth, and write latency, then built the Grafana board the on-call rotation opens first, **taking mean time to diagnose from 40 minutes to 9**."
+    },
+    {
+      "id": "queuelite_design",
+      "status": "approved",
+      "source": "queuelite",
+      "source_role": "Personal project",
+      "role_families": [
+        "backend",
+        "sre_platform"
+      ],
+      "technologies": [
+        "Go",
+        "PostgreSQL"
+      ],
+      "themes": [
+        "job queue",
+        "at-least-once delivery",
+        "open source",
+        "distributed systems"
+      ],
+      "locked_metrics": [
+        "1,400-line",
+        "340 GitHub stars"
+      ],
+      "text": "Wrote a 1,400-line job queue in Go with at-least-once delivery, visibility timeouts, and no dependency beyond Postgres; small enough to read in one sitting, which is why it is used for teaching. 340 GitHub stars."
+    },
+    {
+      "id": "queuelite_contention",
+      "status": "approved",
+      "source": "queuelite",
+      "source_role": "Personal project",
+      "role_families": [
+        "backend",
+        "data_engineer"
+      ],
+      "technologies": [
+        "PostgreSQL",
+        "Go"
+      ],
+      "themes": [
+        "benchmarking",
+        "lock contention",
+        "throughput",
+        "profiling"
+      ],
+      "locked_metrics": [
+        "1,100 jobs per second"
+      ],
+      "text": "Benchmarked the claim path and traced a throughput ceiling to lock contention between competing workers, then rewrote the dequeue query with SKIP LOCKED, reaching 1,100 jobs per second on one Postgres instance."
+    },
+    {
+      "id": "anomaly_replay_dashboard",
+      "status": "approved",
+      "source": "Sensor Rule Replay Dashboard",
+      "source_role": "University project",
+      "role_families": [
+        "full_stack",
+        "ai_ml"
+      ],
+      "technologies": [
+        "Next.js",
+        "Python"
+      ],
+      "themes": [
+        "backtesting",
+        "evaluation UI",
+        "rule tuning",
+        "visualization"
+      ],
+      "locked_metrics": [
+        "18 months"
+      ],
+      "text": "Built a dashboard that replays 18 months of recorded sensor windows against a candidate detection rule and shows which alerts it would have fired, so a rule change is judged before deployment rather than after."
+    },
+    {
+      "id": "costcli_reconciler",
+      "status": "approved",
+      "source": "costcli",
+      "source_role": "Personal project",
+      "role_families": [
+        "data_engineer",
+        "backend"
+      ],
+      "technologies": [
+        "Python",
+        "AWS"
+      ],
+      "themes": [
+        "cost analysis",
+        "reconciliation",
+        "tagging",
+        "CLI tooling"
+      ],
+      "locked_metrics": [
+        "$3,100 per month",
+        "4 accounts"
+      ],
+      "text": "Wrote a CLI that reconciles AWS Cost Explorer exports against tagged resources and reports untagged spend by account, surfacing $3,100 per month of unattributed cost across 4 accounts on its first run."
+    }
+  ]
+}

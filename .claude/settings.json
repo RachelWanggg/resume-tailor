@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 render/generate_outputs.py *)",
+      "Bash(python3 tools/make_tailored_resume.py *)",
+      "Bash(python3 tools/pii_scan.py*)",
+      "Bash(python3 -m unittest*)",
+      "Bash(node scripts/linkedin_easy_apply.mjs *)",
+      "Bash(node scripts/linkedin_cdp.mjs *)",
+      "Bash(node scripts/handshake_quick_apply.mjs *)",
+      "Bash(node scripts/handshake_job_search.mjs *)",
+      "Bash(curl -s http://127.0.0.1:9333/*)",
+      "Bash(curl -s http://127.0.0.1:9334/*)",
+      "Bash(ls outputs*)"
+    ],
+    "deny": []
+  }
+}

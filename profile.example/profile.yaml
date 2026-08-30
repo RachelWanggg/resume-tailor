@@ -1,0 +1,106 @@
+{
+  "_README": [
+    "This file is YOU. Copy this whole directory to ./profile/ and edit every field.",
+    "  cp -r profile.example profile",
+    "",
+    "./profile/ is gitignored. Nothing in it is ever committed.",
+    "",
+    "FORMAT: JSON syntax, which is valid YAML 1.2. This keeps the file parseable by both",
+    "Node and Python with zero dependencies. JSON has no comment syntax, so guidance lives",
+    "in the _help_* keys below. Keys starting with _ are ignored by every tool.",
+    "",
+    "Fields set to null are REQUIRED and unset. The apply scripts refuse to run until you",
+    "fill them in, and will name the ones still missing. They never guess an answer for you."
+  ],
+
+  "_EXAMPLE_NOTICE": "Jordan Rivera is a fictional person. example.com is an IETF-reserved domain and 555-01xx is the reserved fictional phone block, so none of this can reach a real person. Replace all of it.",
+
+  "identity": {
+    "full_name": "Jordan Rivera",
+    "first_name": "Jordan",
+    "last_name": "Rivera",
+    "email": "jordan.rivera@example.com",
+    "phone": "5550142",
+    "_help_phone": "Digits only, no dashes or parentheses. Application forms vary in what they accept, so the scripts format it per field.",
+    "city": "Austin",
+    "state": "TX",
+    "linkedin_url": "https://www.linkedin.com/in/jordan-rivera-example",
+    "github_url": "https://github.com/example-user",
+    "website": "https://example.com",
+    "_help_website": "Set to null if you do not have one. It is omitted from the resume header rather than printed empty."
+  },
+
+  "education": {
+    "_help": "Keep these consistent with education[] in master_resume.yaml. These values answer application form questions; that file feeds the resume itself.",
+    "highest_degree": "Master's",
+    "graduation_date": "2026-06",
+    "_help_graduation_date": "YYYY-MM. Used for 'expected graduation' questions. One value only, so LinkedIn and Handshake can never disagree.",
+    "gpa": null,
+    "_help_gpa": "Number like 3.7, or null. When null, GPA questions are treated as unanswerable and the run stops rather than inventing one. Only fill this in if you are comfortable disclosing it."
+  },
+
+  "work_authorization": {
+    "_help": "REQUIRED. Answer honestly. A false answer here can invalidate an application or an offer, and no part of this tool will answer these for you.",
+    "authorized_to_work_us": null,
+    "_help_authorized_to_work_us": "true or false.",
+    "requires_sponsorship": null,
+    "_help_requires_sponsorship": "true or false. 'Will you now or in the future require sponsorship?'",
+    "us_citizen_or_permanent_resident": null,
+    "_help_us_citizen_or_permanent_resident": "true or false.",
+    "has_security_clearance": false,
+    "_help_has_security_clearance": "If false, postings that require US citizenship or an active clearance are skipped automatically before a resume is generated. See CLAUDE.md gate 6."
+  },
+
+  "preferences": {
+    "willing_to_relocate": true,
+    "remote_ok": true,
+    "target_locations": ["United States"],
+    "years_of_experience": 3,
+    "_help_years_of_experience": "The number you give when a form asks 'years of experience'. Count internships and substantial project work honestly.",
+    "job_preference_statement": "Full-time software engineering opportunities",
+    "_help_job_preference_statement": "Free-text answer for 'what kind of role are you looking for'.",
+    "how_did_you_hear_about_us": "LinkedIn"
+  },
+
+  "compensation": {
+    "salary_expectation": 100000,
+    "_help_salary_expectation": "Annual USD, used when a form requires a number. Research your market rate; this placeholder is not advice. One value shared by every platform.",
+    "accepts_unpaid_internships": false
+  },
+
+  "screening": {
+    "willing_background_check": true,
+    "willing_drug_test": true,
+    "_help": "Standard 'in accordance with applicable law' screening questions."
+  },
+
+  "eeo": {
+    "_help": "Voluntary self-identification. Every field may stay null; null means the script selects 'decline to self-identify' where that option exists, and stops to ask you where it does not. Employers may not require these.",
+    "gender": null,
+    "race_ethnicity": null,
+    "veteran_status": null,
+    "disability_status": null
+  },
+
+  "blocklist": [],
+  "_help_blocklist": "Company names to never apply to, matched case-insensitively as substrings. Example: [\"Acme Staffing\", \"Contoso\"]. Checked before a resume is generated.",
+
+  "browser": {
+    "_help": "Where your logged-in Chrome profiles live. These directories hold live session cookies and belong OUTSIDE this repo. You create them once by launching Chrome with the commands in the README and logging in by hand. This tool never sees your password and stores no credentials.",
+    "linkedin": {
+      "chrome_profile_dir": "~/.config/linkedin-chrome-profile",
+      "debug_port": 9333
+    },
+    "handshake": {
+      "chrome_profile_dir": "~/.config/handshake-chrome-profile",
+      "debug_port": 9334
+    }
+  },
+
+  "output": {
+    "resume_dir": "outputs",
+    "_help_resume_dir": "Relative to the repo root. Generated PDFs and DOCX files land here. Gitignored.",
+    "applied_log": "applied_jobs.txt",
+    "_help_applied_log": "Append-only record of successful submissions, used to skip duplicates. Gitignored."
+  }
+}

@@ -66,14 +66,21 @@ order the Skills section (`01-tailoring-rules.md` Step 5.3).
 
 Pass the role-family label to the Writer.
 
-### 0a. Freshness gate (links and detail pages only)
+### 0a. Freshness gate (jobs you found, not jobs you were given)
 
-When given a job link or detail page, check the platform gates in `CLAUDE.md` first: **posted within
-24 hours** and **not reposted** (read the detail page's "Posted / Reposted X ago"; a search list's
-"New" badge does not count). Either failing → **skip immediately: do not read the JD, do not spawn a
-Writer, do not generate a resume.** Move on silently.
+**This gate turns on provenance, not format.** What matters is who chose the job, not whether you
+received a link or raw text.
 
-When the operator pastes raw JD **text**, there is no detail page to check. Skip this step.
+- **You found it** — during a search or a batch run ("apply to 10 jobs") → apply the gate. Check the
+  **detail page** for **posted within 24 hours** and **not reposted** (a search list's "New" badge
+  does not count). Either failing → **skip immediately: do not read the JD, do not spawn a Writer,
+  do not generate a resume.** Move on silently.
+- **The operator gave it to you** — they pasted a link or JD text and asked for a resume → **do not
+  apply this gate.** They already decided this job is worth applying to, and a 3-day-old posting
+  they care about is still worth a resume. Tailor it.
+
+The gate exists to stop you wasting effort on stale listings *you* surfaced. It is not a veto over
+the operator's own judgment.
 
 ### 0b. Citizenship / clearance gate (applies to raw text too)
 

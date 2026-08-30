@@ -46,8 +46,11 @@ extraction, bullet-bank logic, and output steps are all in `prompts/`.
 
 ## ⛔ Apply gates — non-negotiable
 
-These apply to **any job you found yourself** on LinkedIn or Handshake. They do **not** apply to a
-link the operator pasted by hand; that is a deliberate choice on their part.
+**Scope — gates turn on provenance, not format.** They apply to **any job you found yourself** on
+LinkedIn or Handshake, during a search or a batch run. They do **not** apply to a job the operator
+handed you, whether as a link or as raw text: they already decided it is worth applying to, and
+gates 1–2 (freshness, reposted) are not a veto over that. Gate 6 (citizenship / clearance) is the
+one exception and always applies, because no resume edit can satisfy it.
 
 Check these on the **job detail page** before reading the JD, generating a resume, or applying. Any
 one failing → skip immediately, record why, move to the next job. **Do not read the JD, do not

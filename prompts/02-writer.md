@@ -180,10 +180,9 @@ DOMAIN_WORDS_LANDED: <the JD domain words actually placed in the neighbor's bull
 STACK_LANDING: <stack-sentence techs>/<how many landed in the top two roles> | pass | fail
 SUBSTITUTIONS: <role>: <from> → <to>, <pool>   (one per swap, or "none")
 TITLES: <company>: <chosen title>   (one line per role — all three, always)
-FABRICATED: <role>: <full bullet text> | <the unlanded P0/P1 it covers>   (one per fabricated bullet, or "none")
 SKILLS_ORDER: <first category> | <renamed from X, or "no rename">
-SKILLS_ONLY: <P0/P1 techs that landed only in Skills, with why no legal swap existed>
-TRUE_GAPS: <P0/P1 items with no basis anywhere, or "none">
+SKILLS_ONLY: <P0/P1 techs that landed only in Skills, with why no legal Experience landing existed>
+TRUE_GAPS: <P0/P1/P2 items with no basis anywhere, or "none">
 BANK_UPDATE: <tech> | <role> | <full bullet text>
 ```
 
@@ -192,11 +191,10 @@ BANK_UPDATE: <tech> | <role> | <full bullet text>
 ## Stop conditions
 
 - Never write a cover letter
-- Never ask "did you actually do X?" — the operator studies before the interview
 - Never exceed the bullet budget or the 12-bullet Experience ceiling; never drop a role
-- Never fabricate a company, employer, role entry, project entry, degree, major, or date. Bullet
-  content may be fabricated only through strategy C's last branch, inside its boundary (universal
-  prompt Step 3), and every such bullet goes on the `FABRICATED:` line. TRUE GAPs still get reported
+- Never invent a company, employer, role entry, project entry, degree, major, date, technology,
+  responsibility, outcome, or metric. Every bullet must trace directly to the approved bank or fact
+  ledger. Unsupported P0/P1/P2 items are reported as TRUE GAPs
 - Never edit a hard fact to satisfy a JD requirement
 - Never drop `Intern` from a title, and never claim Senior / Staff / Lead / Principal / Manager
   or a level suffix in one

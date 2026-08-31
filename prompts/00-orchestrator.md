@@ -13,7 +13,7 @@ to conflict with it, follow it and report the conflict.
 
 ## Files
 
-Engine (committed, same for everyone):
+Workflow files:
 
 | File | Owns |
 |---|---|
@@ -26,7 +26,7 @@ Engine (committed, same for everyone):
 | `render/generate_outputs.py` + `render/resume.css` | md → PDF/DOCX renderer |
 | `tools/make_tailored_resume.py` | searches and validates the bullet bank |
 
-Operator data (gitignored, different for everyone):
+Operator data:
 
 | File | Owns |
 |---|---|
@@ -55,9 +55,11 @@ order the Skills section (`01-tailoring-rules.md` Step 5.3).
   lakehouse, data modeling, analytics engineering, BI, dbt, Airflow, Snowflake, Databricks.
   **A JD demanding both data pipelines and LLM/AI still classifies as Data Engineer** when some role
   covers both ends of that chain; pipeline evidence is the scarcer half and leads.
-- **SWE / Backend / Full-Stack** — remaining software engineering roles (backend, frontend, full
-  stack, platform, infrastructure), subdivided per `04-role-presets.md`.
 - **Security** — authn/authz, threat modeling, secrets, compliance, appsec.
+- **SRE / DevOps / Platform / Infrastructure** — reliability, observability, incident response,
+  deployment systems, infrastructure as code, capacity, platform tooling.
+- **Full-Stack** — the body explicitly requires both client/UI work and backend/API ownership.
+- **SWE / Backend** — remaining software engineering roles, including general backend and API work.
 - **Ambiguous titles** ("AI Platform Engineer") — ignore the title entirely; decide from whether the
   listed skills lean AI or lean infra/platform. Still undecidable → prefer AI / ML / GenAI.
 - **Hybrid JDs** that want AI *and* name a full conventional web stack (Python/Django/AWS/SQL/REST/
@@ -142,7 +144,7 @@ with no body:
 After analyzing the JD normally, run:
 
 ```bash
-python3 tools/make_tailored_resume.py search --jd-file <jd-file> --role <role>
+python3 tools/make_tailored_resume.py search --jd-file <jd-file> --role "<role-family label>"
 ```
 
 Pass the ranked candidates to the Writer. A candidate is reusable only when its source role,
@@ -185,11 +187,10 @@ Report only:
 - Output file paths per JD (PDF + DOCX)
 - Skip notices
 - Any `⚠️ HARD MISMATCH` lines from step 0d
-- Three lists from each Writer's internal report:
+- Two lists from each Writer's internal report:
   - `SUBSTITUTIONS` — which technologies each resume claims
   - `TITLES` — what title each role was given
-  - **`FABRICATED`** — which bullets were produced by strategy C. **These must be prepared before
-    any interview.**
+- `SKILLS_ONLY` and `TRUE_GAPS` items the recorded experience could not place honestly
 
 Keep the same substitutions when applying to the same company again.
 

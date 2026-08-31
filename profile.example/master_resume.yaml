@@ -2,7 +2,7 @@
   "schema_version": 2,
   "format_note": "JSON syntax is valid YAML 1.2 and keeps this file dependency-free.",
   "approval_policy": "Only bullets you have explicitly approved may be stored here. A tailored resume is assembled from this file; it is never edited into existence from a draft.",
-  "_EXAMPLE_NOTICE": "Everything below describes JORDAN RIVERA, a fictional person. The companies, schools, projects, metrics, and contact details are invented and do not refer to any real person or organization. Replace all of it with your own before using this repo. See README section 'Fill in your profile'.",
+  "_EXAMPLE_NOTICE": "Everything below describes JORDAN RIVERA, a fictional person. The companies, schools, projects, metrics, and contact details are invented and do not refer to any real person or organization. Replace all of it with your own before using this repo. See README section 'Create Your Profile'.",
   "header": {
     "name": "Jordan Rivera",
     "contact_line": "jordan.rivera@example.com | 555-0142 | linkedin.com/in/jordan-rivera-example | github.com/example-user | <<CITY, ST>>",

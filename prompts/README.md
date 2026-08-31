@@ -1,8 +1,7 @@
 # prompts/
 
 Every rule the agents follow lives here, in one folder, read by Claude Code and Codex alike. Nothing
-in this directory contains personal data — your identity and résumé content live in `profile/`,
-which is gitignored.
+in this directory contains personal data — your identity and résumé content live in `profile/`.
 
 ## The files, in reading order
 
@@ -36,17 +35,6 @@ triggers to `00-orchestrator.md` step 0, add its key to `skills_lead_category_by
 `profile/master_resume.yaml`, and tag your bullets with it.
 
 To **change how aggressively the resume tailors**, look at `01-tailoring-rules.md` Step 3
-(injection strategies) and Step 5.2 (bullet budget). Step 3's strategy C is the one that permits
-fabrication within declared bounds; if you would rather never fabricate, remove that branch — the
-pipeline will report more TRUE GAPs instead, which is a legitimate way to run it.
-
-## A note on strategy C
-
-The pipeline can generate a bullet that describes work you did not literally do, under narrow
-constraints: it must sit inside a real role, cover an uncovered requirement, pass a two-axis
-plausibility test, and be declared on the Writer's `FABRICATED:` line, which is surfaced to you in
-the final reply.
-
-That declaration exists so you know exactly what is on the page. **Anything on the `FABRICATED` line
-you have not prepared to discuss should be removed before you submit.** You are responsible for
-every claim in a resume you send.
+(evidence-backed alignment strategies) and Step 5.2 (bullet budget). Every claim must remain
+traceable to `profile/master_resume.yaml` or `profile/fact_ledger.md`; unsupported requirements are
+reported as TRUE GAPs.

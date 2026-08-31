@@ -26,7 +26,7 @@ Supporting references, read when the workflow calls for them:
 
 ## The operator's data
 
-Everything personal lives in `profile/`, which is gitignored:
+Everything personal lives in `profile/`:
 
 - `profile/master_resume.yaml` — the single source of resume content: header, education, frozen
   role/project facts, the Skills taxonomy, and every approved tagged bullet. Every resume is
@@ -35,8 +35,11 @@ Everything personal lives in `profile/`, which is gitignored:
   decides whether a technology claim is legitimate.
 - `profile/profile.yaml` — identity, application Q&A answers, output paths. Facts only, no workflow.
 
-If `profile/` is missing, stop and tell the operator to run `cp -r profile.example profile`. Never
-read resume content from `profile.example/` — it describes a fictional person.
+When the operator asks to set up their profile from an existing resume, copy `profile.example/` to
+`profile/`, populate all three files from the supplied resume, and ask for anything missing. Never
+invent a fact. If tailoring is requested before setup and no resume was supplied, ask the operator
+to set up `profile/` first. Never treat `profile.example/` as the operator's resume; it describes a
+fictional person.
 
 Role-family classification is driven by **JD body content, not job title** — see
 `prompts/00-orchestrator.md` step 0.
@@ -49,12 +52,3 @@ python3 render/generate_outputs.py <input.md>
 
 Styling comes only from `render/resume.css`. PDF export uses Microsoft Word on macOS, or
 LibreOffice anywhere; on macOS the execution context must be allowed to automate Word.
-
-## Before pushing
-
-```bash
-python3 tools/pii_scan.py
-python3 -m unittest discover -s tests
-```
-
-Both must pass. `profile/` and `outputs/` must never be committed.

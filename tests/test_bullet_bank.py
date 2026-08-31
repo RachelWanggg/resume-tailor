@@ -53,6 +53,11 @@ class BulletBankTests(unittest.TestCase):
         ids = [c["id"] for c in result["candidates"]]
         self.assertIn("fx_cache_latency", ids)
 
+    def test_selected_role_family_overrides_incidental_jd_keyword(self):
+        jd = "Build backend APIs that publish a small event to Kafka."
+        result = search(jd, role="SWE / Backend", limit=5)
+        self.assertEqual(result["role_family"], "backend")
+
     def test_role_family_blocks_irrelevant_family_bonus(self):
         jd = "Develop Salesforce customizations with Apex and Lightning Components."
         result = search(jd, role="Salesforce Developer", limit=5)

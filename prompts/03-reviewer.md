@@ -13,8 +13,8 @@ You will receive:
 2. **JD KEYWORD ANALYSIS** — the P0/P1/P2 keyword list, repeated phrases, quality attributes,
    domain vocabulary, and the **stack sentence**
 3. **WRITER'S INTERNAL REPORT** — `HARD_MISMATCH`, `BULLET_BUDGET`, `PRESET`, `NEIGHBOR`,
-   `DOMAIN_WORDS_LANDED`, `STACK_LANDING`, `SUBSTITUTIONS`, `TITLES`, `FABRICATED`,
-   `SKILLS_ORDER`, `SKILLS_ONLY`, `TRUE_GAPS`
+   `DOMAIN_WORDS_LANDED`, `STACK_LANDING`, `SUBSTITUTIONS`, `TITLES`, `SKILLS_ORDER`,
+   `SKILLS_ONLY`, `TRUE_GAPS`
 
 **50 items, numbered 1–50, no gaps and no letter suffixes.**
 
@@ -77,19 +77,10 @@ Check the JD's condition against `profile/profile.yaml` → `work_authorization`
 saying "no sponsorship available" is a mismatch only when `requires_sponsorship` is true; when it is
 false, that JD line is satisfied and flagging it is a false positive.
 
-**3. Fabrication stayed inside its boundary.** Bullet content **may** be fabricated, through
-strategy C's last branch only (universal prompt Step 3). Identity may not. Check all five fences:
-
-- **Identity intact** — no invented company, employer, role entry, project entry, degree, major, or
-  date. A fabricated bullet must sit **inside an existing role**. A new role or project = FAIL.
-- **Target legal** — every fabricated bullet covers an **unlanded P0 or P1**. Fabricated for a P2, or
-  for something already landed elsewhere = FAIL.
-- **Declared** — every fabricated bullet appears on the Writer's `FABRICATED:` line, with the P0/P1
-  it covers. An undeclared one = **immediate FAIL**; the operator would go into the interview not
-  knowing the claim is on the page.
-- **Plausible on both axes** — item 29's test, industry and business logic together.
-- **Metric honest in form** — a single definite intern-scale value that contradicts no other number
-  on the page (items 15, 19, 33).
+**3. Evidence integrity.** Every bullet's technology, responsibility, outcome, and metric must have
+direct support in `profile/master_resume.yaml` or `profile/fact_ledger.md`. Plausibility alone is not
+support. Any unsupported claim = FAIL; an unsupported metric is an immediate FAIL. An unsupported
+P0/P1/P2 must be reported under `TRUE_GAPS`, not converted into a new claim.
 
 **4. No P0 or P1 hiding in Skills.** A P0 or P1 technology that appears **only** in the Skills
 section = FAIL, unless the Writer's report lists it under `SKILLS_ONLY` with a stated reason why no
@@ -100,15 +91,19 @@ Skills.
 
 ## Part A — Keyword coverage (items 5–11)
 
-**5. P0 coverage.** Every P0 keyword appears in ≥1 **Experience** bullet. Skills-only = FAIL.
-Projects-only = FAIL.
+**5. P0 coverage.** Every supported P0 keyword appears in ≥1 **Experience** bullet. A missing P0 is
+PASS only when the report documents it under `SKILLS_ONLY` or `TRUE_GAPS` with an evidence-based
+reason; silently missing, Skills-only, or Projects-only without that report entry = FAIL.
 
-**6. P1 coverage.** Every P1 keyword appears in ≥1 **Experience** bullet. Skills-only = FAIL.
-Projects-only = FAIL. (P1 has the same landing requirement as P0; only the sourcing differs.)
+**6. P1 coverage.** Apply the same rule as item 5. P1 has the same Experience landing requirement
+as P0; only the sourcing differs.
 
-**7. P2 coverage.** P2 keywords present anywhere — Skills is enough. Missing entirely = FAIL.
+**7. P2 coverage.** Every supported P2 appears somewhere; Skills is enough. An unsupported P2 must
+be omitted from the resume and documented under `TRUE_GAPS`. Silently missing or falsely claimed =
+FAIL.
 
-**8. JD tech density.** P0 keywords are visible on a first scan of the Experience section.
+**8. JD tech density.** Every landable P0 keyword is visible on a first scan of the Experience
+section. Items documented under `SKILLS_ONLY` or `TRUE_GAPS` are excluded from this visual check.
 
 **9. Verbatim phrase mirroring.** The JD's repeated multi-word phrases (appearing in both
 "What You'll Do" and "What You'll Bring", or ≥2 times) appear in the JD's **exact wording**, not a
@@ -199,7 +194,7 @@ scratch, the second → FAIL.
 data shape, and that role's business context. Ask: "would this bullet survive an interviewer asking
 for implementation detail?" Implausible combination = FAIL.
 
-Judge every bullet — fabricated or not — on **two axes, both of which must pass**:
+Judge every bullet on **two axes, both of which must pass**:
 
 - **US industry practice** — would a US engineering team of this size, in this era, have built it
   this way with this technology? "Nobody does it that way" = FAIL. So does a technology that
@@ -241,8 +236,9 @@ consumers") → FAIL.
 **31. One cloud per role.** A single Experience role or project must not name two cloud providers.
 Different roles may use different providers. Two providers inside one role = FAIL.
 
-**32. Swap legality.** Every substitution must sit inside an interchange pool from
-`06-tech-substitution.md` Part 1. A substitution across layers = FAIL.
+**32. Swap legality.** Every substitution must be explicitly supported for that role in
+`profile/fact_ledger.md` and sit inside an interchange pool from `06-tech-substitution.md` Part 1.
+Missing evidence or a substitution across layers = FAIL.
 
 **33. Number coherence.** Numbers across bullets must not contradict for the same product. Check
 user counts, request volumes, dataset sizes, and cost figures across all bullets of a role.
@@ -339,8 +335,9 @@ no domain clause in the Summary = WARNING.
 
 - If ≥1 base language (`Python, Java, JavaScript, TypeScript, SQL, C/C++`) overlaps → those cover
   the requirement; no additional language may be injected into Experience.
-- A non-base language injected purely due to an OR-list must appear in the **Projects entry only**,
-  never in Experience. Injected into Experience under an OR-list = FAIL.
+- A non-base language selected purely due to an OR-list must have direct project evidence and appear
+  in that **Projects** entry only, never in Experience. No project evidence, or placement in
+  Experience under an OR-list = FAIL; with no supported option, `TRUE_GAPS` is required.
 - Exception: if the JD says "primarily X", or X appears in the job title, X is P0 and normal
   injection rules apply — do not flag this as an OR-list violation. If X is a language with no legal
   swap into any bullet, it must be reported under `SKILLS_ONLY` (item 4), not silently left in the
@@ -373,7 +370,8 @@ title family (universal prompt Step 3c). Audit each of the three title lines:
 ## Part H — Page-budget discipline (item 50)
 
 **50. P2 did not crowd out P0 or P1.** Injection is gated by tier (universal prompt Step 3): P0 and
-P1 may be injected into bullets, P2 may not — Skills is its required and sufficient landing.
+P1 may use evidence-backed alignment strategies, while a supported P2 belongs in Skills and an
+unsupported P2 belongs only in `TRUE_GAPS`.
 
 - Any bullet naming a **P2** technology while some **P0 or P1 is still unlanded** in Experience
   = FAIL. Quote the bullet and name the unlanded P0/P1.

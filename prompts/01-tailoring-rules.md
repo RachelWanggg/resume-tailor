@@ -59,6 +59,10 @@ and `[NICE]` never appear in a coverage verdict on their own.
 | **P1** | `[NICE]` that **is stack-core** (test below): typically the Preferred / Nice-to-have section | ≥1 **Experience** bullet. Projects and Skills do **not** count |
 | **P2** | `[NICE]` that is **not stack-core**: an off-hand mention ("familiar with Grafana a plus") | Skills section is enough |
 
+"In the job title" promotes only a concrete technology or language named there, such as Java in
+"Java Developer." Generic title-family words such as software, backend, data, platform, engineer,
+or intern are classification and title-alignment signals, not coverage keywords.
+
 ### The stack-core test — what separates P1 from P2
 
 A `[NICE]` item is **stack-core**, and therefore P1, when **any one** of these holds:
@@ -73,7 +77,9 @@ Preferred sections routinely produce both tiers. The split is a cost decision, n
 
 A P0 or P1 item with no legal landing is not silently dropped. It is reported as a **TRUE GAP**, or,
 where it exists in Skills but no Step-3b swap could put it in a bullet, as **`SKILLS_ONLY`** with
-the reason. Silently absent = fail.
+the reason. An unsupported P2 is also reported as a **TRUE GAP** and omitted from the resume; it is
+never added to Skills merely because Skills would have been a sufficient landing. Silently absent
+= fail.
 
 ---
 
@@ -93,7 +99,7 @@ HARD MISMATCH: <JD condition> vs <actual fact> | hard filter | soft preference
 Then continue the remaining steps anyway, so the operator can decide whether to apply.
 
 Two conditions are **skips, not mismatches** — the orchestrator drops the job before a Writer is
-ever spawned (`00-orchestrator.md` step 0a-1): a JD requiring **US citizenship** or a **security clearance**
+ever spawned (`00-orchestrator.md` step 0b): a JD requiring **US citizenship** or a **security clearance**
 (Secret / Top Secret / TS-SCI, "ability to obtain a clearance", "favorably adjudicated Government
 background investigation"), whether it sits under Required or Preferred.
 
@@ -174,8 +180,9 @@ zero supporting bullets on an infrastructure application.)*
 So for each P0 and P1:
 
 - Present in Skills **and** in an Experience bullet → covered.
-- Present in Skills only → run **Step 3b**. If an interchange pool allows the swap, put it in the
-  bullet. If no legal swap exists, report it under `SKILLS_ONLY` with the reason.
+- Present in Skills only → run **Step 3b**. If the fact ledger identifies an Experience host and an
+  interchange pool permits the swap, put it in that bullet. If no evidence-backed Experience
+  landing exists, report it under `SKILLS_ONLY` with the reason.
 - Absent from both → TRUE GAP.
 
 ---
@@ -196,74 +203,27 @@ Every row gets exactly one of four verdicts:
   bullet says "agentic workflows", even when "multi-agent orchestration" is more precise.
 - **ADJACENT** — the JD names a peer of something present (LangGraph where they want LangChain,
   Terraform where they want Pulumi, AWS where they want Azure). Action: run **Step 3b** and swap
-  where the interchange pool allows it and the bullet still holds together. Where no swap is legal,
-  surface the adjacent item explicitly and name the transferable concept in the JD's words.
-- **TRUE GAP** — no basis anywhere. Action: Route per the injection strategies below; if there is no plausible host, it goes to Skills as P2 or is reported as a gap.
+  only where the fact ledger supports the target and the bullet still holds together. Where no swap
+  is legal, keep the evidenced technology, mirror only the truthful transferable concept, and report
+  the target under `SKILLS_ONLY` or `TRUE_GAPS`.
+- **TRUE GAP** — no basis anywhere. Action: report it under `TRUE_GAPS` and make no claim. Never add
+  an unsupported item to Skills or a bullet.
 
 Projects participate in this matrix on equal footing with Experience — but a Projects landing never satisfies a P0 or P1.
 
-### Injection strategies — apply in order
+### Evidence-backed alignment strategies — apply in order
 
-- **A (swap)** — the master resume has an equivalent Y doing the same task → swap Y → X.
-- **B (embed)** — the master resume has related business context → embed X into an existing bullet.
-- **C (augment)** — no exact-match context, but X is an industry-standard counterpart or extension of technology the role already uses → augment the closest bullet. If X has no real technical relationship to what the role did, fabricate a bullet, do NOT fall back to Skills.
+- **A (swap)** — the master resume has an equivalent Y doing the same task, and the target X is
+  explicitly confirmed for that role in `profile/fact_ledger.md` → swap Y → X.
+- **B (embed)** — the fact ledger explicitly confirms X in the same business context → embed X into
+  an existing bullet without changing the locked metric or responsibility.
+- **C (draft from evidence)** — the fact ledger contains a real accomplishment not yet represented
+  in the approved bank → draft a bullet from those recorded facts and emit it as a `BANK_UPDATE`
+  proposal. It is not added to the bank without operator approval.
 
-#### When C fabricates — the boundary
-
-Strategy C's last branch writes a **new bullet** for a technology with no basis in the evidence pool.
-It is the most expensive move on the page and the only one that cannot be defended from memory, so
-it is fenced:
-
-**It fires only for an unlanded P0 or P1.** Never for a P2 — the tier gate below forbids that, and
-Skills already covers P2. Never to satisfy a Step-0 eligibility condition.
-
-**It fabricates bullet content, never identity.** These stay untouchable, exactly as before: company
-names, employers, role entries, project entries, degrees, majors, graduation dates, date ranges, and
-past-job cities. A fabricated bullet is always **hosted inside an existing role**, chosen by the
-injection-target ranking below; it never adds a role, a project, or a line of Education.
-
-**The fabricated bullet obeys every Step-4 rule with no exemption.** Past-tense approved verb,
-200–320 characters, ≤3 technology names, one accomplishment, no em-dash, no tagline, and **one
-definite metric** — which, since there is no real measurement behind it, must be a number this role
-could plausibly have produced at intern scale (`05-style-profile.md`): no >100K users, no >80% gain on
-a business metric, no team leadership. It must also not contradict any other number on the page for
-the same product (Step 7, number coherence).
-
-**It must be plausible on two axes at once — US industry practice, and this role's real business
-logic.** Both, not either.
-
-*Industry axis.* The work described has to be how a US engineering team would actually have built
-this, at this company size, in this era. The technology has to be one a team like that would
-plausibly have adopted for that problem, wired the way the industry wires it. An intern at a
-three-person AI consultancy did not run a service mesh; a 2025 agri-tech SaaS team did not build on
-a technology that postdates it. If a US hiring manager reading the bullet would think "nobody does
-it that way", it fails here.
-
-*Business-logic axis.* The work has to belong to what that role's product actually does, per the
-**Business context** section of `profile/fact_ledger.md` for that role. A fabricated bullet has to
-be a thing **that product would have needed**.
-
-Worked contrasts, using the example persona's roles (freight-routing SaaS, cold-chain sensor
-telemetry, clinical billing) — apply the same reasoning to whatever roles the operator's ledger
-actually describes:
-
-| Fabricated bullet | Verdict |
-|---|---|
-| Elasticsearch over shipment records at the freight platform, to make booking history searchable | **OK** — a real need of that product, and the standard choice for that job |
-| Kubernetes autoscaling of the telemetry ingestion consumers | **OK** if the bullet has replicas or load in context; the industry does run consumers this way |
-| A vector store at the freight platform for semantic search over carrier contracts | **Weak** — technically buildable, but a rate-quoting product had no reason to. Fails the industry axis |
-| A feature store / model registry at the clinical billing role | **FAIL** — the ledger records extraction and retrieval, explicitly no model training. Fails the business-logic axis |
-| Anything about hardware fleets, datacenter capacity, or physical provisioning | **FAIL** — check the ledger; if no role touches physical infrastructure, this is unreachable |
-| Terraform provisioning the telemetry staging environment | **OK** — already recorded in the fact ledger as this exact host, so it is not even fabrication |
-
-Where nothing passes both axes, the item is a TRUE GAP and gets reported as one. **Fabricating an
-implausible bullet is worse than reporting the gap** — the gap costs one keyword, the implausible
-bullet costs the interview.
-
-**It is always declared.** Every fabricated bullet is reported on the `FABRICATED:` line of the
-internal report and surfaced to the operator, who studies it before the interview. An undeclared
-fabricated bullet is the one failure mode this rule cannot tolerate: the operator would walk into an
-interview not knowing the claim is on the page.
+These strategies never create a technology, responsibility, outcome, or metric that is absent from
+the evidence pool. Plausibility is not evidence. If neither `profile/master_resume.yaml` nor
+`profile/fact_ledger.md` directly supports an unlanded P0 or P1, report a `TRUE GAP`.
 
 #### Injection is gated by tier
 
@@ -271,13 +231,14 @@ Injection is not free: the page holds 12 Experience bullets, and each bullet hol
 
 | Tier | Injection budget |
 |---|---|
-| **P0** | Strategies A, B, and C all available. Must reach an Experience bullet. |
+| **P0** | Evidence-backed strategies A, B, and C are available. Must reach an Experience bullet. |
 | **P1** | Same as P0. Must reach an Experience bullet. |
-| **P2** | **No injection.** It lands in Skills, which is its required landing anyway. One exception: strategy **B** may embed it in an existing bullet when that costs nothing — no added length, no claim on the bullet's 3-technology budget, no change to the verb or the metric. |
+| **P2** | **No injection.** If supported by the profile, it lands in Skills. If unsupported, it is reported under `TRUE_GAPS`. One exception: strategy **B** may embed a supported P2 in an existing bullet when that costs nothing — no added length, no claim on the bullet's 3-technology budget, no change to the verb or the metric. |
 
 **When a P0 or P1 and a P2 compete for the same bullet's 3-technology budget, the P2 always yields.** A bullet carrying a P2 while any P0 or P1 is still unlanded is a defect, not a bonus — the reviewer fails it.
 
-**Never invent a company, role, project, or degree.** Technology names, metrics, and outcomes ARE fair game to add or swap into an existing bullet when the substitution plausibly fits that role's real business context.
+**Never invent a company, role, project, degree, technology, responsibility, metric, or outcome.**
+Every claim must trace to the approved bank or fact ledger.
 
 ### Injection target capacity
 
@@ -302,9 +263,6 @@ carry its story, so many genuinely-used technologies appear in the ledger and in
 Those are real and available, and the ledger names the natural host for each. Reporting a TRUE GAP
 without having read the ledger is the most common false gap in this pipeline.
 
-**Do NOT ask "did you actually do X?"** The operator studies before the interview. Tech is
-transferable.
-
 ---
 
 ## Step 3b — Technology substitution protocol
@@ -313,8 +271,9 @@ An ADJACENT verdict is not a dead end. Where the JD names an **equivalent peer**
 already in a bullet, swap it in. This is the second-highest-ROI move after VOCABULARY GAP, and it is
 what turns a 60% keyword match into a 90% one.
 
-The gate is **not** "which one did I use". The gate is **"does the bullet still describe a coherent
-system after the swap, and can it be defended when an interviewer asks for detail?"**
+The first gate is evidence: the target technology must be explicitly confirmed for that role in
+`profile/fact_ledger.md`. The second gate is coherence: the rewritten bullet must still describe
+the same system, responsibility, and locked outcome.
 
 The interchange pools, the forbidden-swap table, and the cloud-family movement table live in
 **`06-tech-substitution.md` Parts 1–3**. That file is authoritative for which swaps are legal; do not
@@ -510,8 +469,9 @@ sentence must appear in the bullets of the **top two roles by position** — not
 only in a project at the bottom of the page. If they do not, rework those bullets until they do, or
 report the failure as `STACK_LANDING: … | fail`.
 
-**5.5 — Coverage.** Every P0 and every P1 lands in an Experience bullet. Anything that cannot is
-reported as `SKILLS_ONLY` or `TRUE_GAPS`, never silently dropped.
+**5.5 — Coverage.** Every supported P0 and P1 lands in an Experience bullet. Anything that cannot
+is reported as `SKILLS_ONLY` or `TRUE_GAPS`, never silently dropped. Every supported P2 lands in
+Skills; an unsupported P2 is reported under `TRUE_GAPS` and omitted from the resume.
 
 ---
 
@@ -549,8 +509,10 @@ When the JD lists ≥4 languages joined by `or` / `/` (e.g. `JS / TS / Python / 
 
 1. Check overlap with the base languages (Python, Java, JavaScript, TypeScript, SQL, C/C++). If any
    match, those satisfy the requirement — **do not force more**.
-2. If none overlap, pick **one** by priority — TypeScript > Go > Java > Swift > C++ — and land it in
-   a **Projects** entry only, never in an Experience bullet.
+2. If none overlap, consider the listed languages in this priority — TypeScript > Go > Java >
+   Swift > C++ — and pick the first one directly supported by a Projects entry in the approved bank
+   or fact ledger. Land it in that **Projects** entry only, never in Experience. If none is
+   supported, report the language list under `TRUE_GAPS` and make no claim.
 3. If the JD says "primarily X", or X is in the job title, X is P0 and normal rules apply. This is
    not an OR-list case. If X is a language with no legal Step-3b swap into any bullet, report it
    under `SKILLS_ONLY` rather than leaving it silently in the Skills line.
@@ -585,11 +547,10 @@ Verify each of these before emitting. The Reviewer checks the same ground indepe
 - [ ] Every Experience title follows Step 3c: keeps `Intern`, claims no seniority not held, and
       stays true to what that role actually did
 - [ ] No invented company, employer, role entry, project entry, degree, major, or date
-- [ ] Every fabricated bullet (strategy C's last branch) targets an unlanded P0 or P1, sits inside an
-      existing role, passes the plausibility test, carries an intern-scale definite metric that
-      contradicts no other number, and is listed on the `FABRICATED:` line
+- [ ] Every bullet's technology, responsibility, outcome, and metric has direct support in the
+      approved bank or fact ledger; unsupported P0/P1/P2 items are reported as `TRUE_GAPS`
 - [ ] Every P0 and P1 either lands in an Experience bullet, or appears under `SKILLS_ONLY` /
-      `TRUE_GAPS` with a reason
+      `TRUE_GAPS` with a reason; every unsupported P2 appears under `TRUE_GAPS`
 - [ ] No P2 was injected into a bullet at the cost of a P0, a P1, or the length limit
 
 **Content**

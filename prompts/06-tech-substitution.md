@@ -4,9 +4,9 @@ Which technologies are legal peer swaps when `01-tailoring-rules.md` Step 3b fir
 governs **substitution, not truth**.
 
 The companion to this file is your `profile/fact_ledger.md` — the record of what each of your roles
-and projects *actually* involved. That is the evidence pool; this is the rulebook for restating it
-in a different stack's vocabulary. A swap is only legal when the fact ledger supports the
-underlying work; renaming a technology never invents experience you do not have.
+and projects *actually* involved. That is the evidence pool; this file only checks whether two
+technologies are structurally interchangeable. A swap is legal only when the fact ledger explicitly
+confirms the target technology for that role. Membership in an interchange pool is not evidence.
 
 Your `profile/master_resume.yaml` bullets are deliberately narrower than the fact ledger. A bullet
 names the two or three technologies that carry the story; everything else waits in the ledger until
@@ -16,7 +16,8 @@ a JD asks for it.
 
 # PART 1 — INTERCHANGE POOLS
 
-Swaps are legal **within a row**.
+Swaps are structurally coherent **within a row**, subject to direct fact-ledger support for the
+target technology.
 
 | Layer | Peers | Notes |
 |---|---|---|
@@ -81,9 +82,9 @@ bullet of the same role**. Half-swapped output is a fabrication tell.
 
 **Worked example — a notification fan-out pipeline**
 
-The same work, restated in each provider's vocabulary. Note that *every* noun moves together;
-leaving one behind ("SNS topics with Azure Functions consumers") is the tell that gives a
-fabrication away.
+This table illustrates the dependent nouns that move together after the fact ledger confirms the
+target provider. It is not permission to claim a provider that the role did not use. Leaving one
+noun behind ("SNS topics with Azure Functions consumers") creates an incoherent stack.
 
 ```
 AWS   : SNS fanout into SQS queues with Lambda consumers, retrying failed deliveries

@@ -39,7 +39,7 @@ export function loadProfile(profilePath = PROFILE_PATH) {
       `No profile found at ${profilePath}\n` +
       `Create one by copying the example and filling it in:\n` +
       `    cp -r profile.example profile\n` +
-      `Then edit profile/profile.yaml. See the README section "Fill in your profile".`
+      `Then edit profile/profile.yaml. See the README section "Create Your Profile".`
     );
   }
 

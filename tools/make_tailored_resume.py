@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# The operator's own bullet bank. Gitignored; created by `cp -r profile.example profile`.
+# The operator's own private bullet bank, created from `profile.example/` during setup.
 # Override with --bank to point at a different file (the test suite does this).
 BANK_PATH = ROOT / "profile" / "master_resume.yaml"
 
@@ -77,7 +77,13 @@ def words(text: str) -> set[str]:
 
 
 def infer_role_family(jd: str, role: str = "") -> str:
-    haystack = f"{role}\n{jd}".lower()
+    # `role` is the orchestrator-selected family label, so it takes precedence over incidental
+    # keywords in the JD. Fall back to the body only when no family label was supplied.
+    selected = role.lower()
+    for family, pattern in ROLE_PATTERNS:
+        if re.search(pattern, selected):
+            return family
+    haystack = jd.lower()
     for family, pattern in ROLE_PATTERNS:
         if re.search(pattern, haystack):
             return family
@@ -216,7 +222,7 @@ def build_parser() -> argparse.ArgumentParser:
     search = sub.add_parser("search", help="rank approved bullets against a JD")
     search.add_argument("--jd-file")
     search.add_argument("--jd-text")
-    search.add_argument("--role", default="")
+    search.add_argument("--role", default="", help="orchestrator-selected role-family label")
     search.add_argument("--source", default="")
     search.add_argument("--limit", type=int, default=8)
     sub.add_parser("validate", help="validate bank schema and locked metrics")

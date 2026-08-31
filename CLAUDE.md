@@ -13,16 +13,15 @@ any JD.**
 If a rule below conflicts with the prompts, the prompts win and this file is the bug — fix it here
 rather than working around it.
 
-This file owns exactly two things: **the platform apply gates** and **the apply flows**. It
+This file owns the profile bootstrap, **the platform apply gates**, and **the apply flows**. It
 deliberately restates no tailoring rule.
 
-## Engine vs. profile
+## Project data
 
-| | Committed | Gitignored |
-|---|---|---|
-| `prompts/`, `scripts/`, `tools/`, `render/` | ✅ the engine | |
-| `profile/` — identity, bullets, answers | | ✅ never committed |
-| `outputs/`, `applied_jobs.txt` | | ✅ never committed |
+- `prompts/`, `scripts/`, `tools/`, and `render/` contain the workflow.
+- `profile/` contains the operator's identity, resume content, fact ledger, and application answers.
+- `outputs/` contains generated resumes.
+- `applied_jobs.txt` records completed applications for deduplication.
 
 `profile/master_resume.yaml` is the only source of resume content: header, education, frozen
 role/project facts, the Skills taxonomy, and every approved tagged bullet. Every tailored resume is
@@ -34,8 +33,11 @@ write one *with* the operator, get approval, and add it with proper tags. The ne
 finds it by search instead of being rewritten. This is what makes the tenth application cheaper
 than the first.
 
-If `profile/` does not exist, stop and tell the operator to run `cp -r profile.example profile`.
-Never read resume content from `profile.example/` — it describes a fictional person.
+When the operator asks to set up their profile from an existing resume, copy `profile.example/` to
+`profile/`, populate all three files from the supplied resume, and ask for anything missing. Never
+invent a fact. If tailoring is requested before setup and no resume was supplied, ask the operator
+to set up `profile/` first. Never treat `profile.example/` as the operator's resume; it describes a
+fictional person.
 
 ## When the operator gives you a JD
 
@@ -50,7 +52,8 @@ extraction, bullet-bank logic, and output steps are all in `prompts/`.
 LinkedIn or Handshake, during a search or a batch run. They do **not** apply to a job the operator
 handed you, whether as a link or as raw text: they already decided it is worth applying to, and
 gates 1–2 (freshness, reposted) are not a veto over that. Gate 6 (citizenship / clearance) is the
-one exception and always applies, because no resume edit can satisfy it.
+one exception and always applies when the profile shows the operator does not meet it, because no
+resume edit can satisfy it.
 
 Check these on the **job detail page** before reading the JD, generating a resume, or applying. Any
 one failing → skip immediately, record why, move to the next job. **Do not read the JD, do not
@@ -63,7 +66,7 @@ invoke `tailor-resume`, do not generate a resume** for a job that fails a gate.
 | 3 | **In-platform apply only** | LinkedIn: Easy Apply only (skip "Apply on company website"). Handshake: Quick Apply only (skip "Apply Externally") |
 | 4 | **Answer from the profile** | Every application answer comes from `profile/profile.yaml`. Never invent one, and never carry an answer over from a different operator or a previous session |
 | 5 | **Always a tailored resume** | Upload the PDF generated for *this* job. Never one-click submit with the platform's stored default resume |
-| 6 | **No citizenship / clearance roles** | JD mentions "U.S. Citizen", "US citizenship required", "Secret / Top Secret / TS-SCI clearance", "ability to obtain a security clearance", or "favorably adjudicated Government background investigation" — under Required *or* Preferred → skip silently. The operator cannot satisfy this and no resume edit can change that |
+| 6 | **Citizenship / clearance eligibility** | Compare the JD with `profile/profile.yaml`. If it requires citizenship or a clearance the operator does not hold — under Required *or* Preferred — skip silently. Never assume the operator is ineligible |
 
 Notes on gate 1: a search list's "New" badge means nothing. Read the detail page's
 "Posted / Reposted X ago".
@@ -261,12 +264,3 @@ Use a snapshot only when you genuinely cannot locate an element, then go back to
 Applying to several jobs: **collect every JD first, spawn all Writers in one parallel batch, wait
 for all of them, then submit one at a time.** Do not interleave "apply one, tailor one" — that
 spreads sub-agent overhead across the whole session and inflates context.
-
-## Before pushing
-
-```bash
-python3 tools/pii_scan.py
-python3 -m unittest discover -s tests
-```
-
-Both must pass. `profile/` and `outputs/` must never be committed.

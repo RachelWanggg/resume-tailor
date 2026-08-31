@@ -994,13 +994,25 @@ async function applyToJob(cdp, jobUrl, resumePath, extraAnswers) {
         }
 
       } else if (field.type === 'div-radio') {
-        // Default to Yes for unknown yes/no questions
-        const targetLabel = (answer?.type === 'yes-no-radio') ? answer.value : 'Yes';
+        if (!answer || answer.type !== 'yes-no-radio') {
+          unknownQuestions.push({
+            label: field.label,
+            type: 'yes-no-radio',
+            options: field.options.map(o => o.label),
+          });
+          continue;
+        }
+        const targetLabel = answer.value;
         const targetOption = field.options.find(o =>
           o.label.toLowerCase() === targetLabel.toLowerCase()
         );
         if (!targetOption) {
           process.stderr.write(`[div-radio] option "${targetLabel}" not found in [${field.options.map(o=>o.label).join(', ')}]\n`);
+          unknownQuestions.push({
+            label: field.label,
+            type: 'yes-no-radio',
+            options: field.options.map(o => o.label),
+          });
           continue;
         }
         if (!targetOption.checked) {

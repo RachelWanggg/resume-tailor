@@ -20,7 +20,7 @@ skip gates, sub-agent spawning, rendering, and the reply format, and it points t
 | `prompts/05-style-profile.md` | verb variety, banned adjectives, realistic scale |
 | `prompts/06-tech-substitution.md` | which technology swaps are legal |
 
-The operator's own data — identity, résumé bullets, application answers — lives in `profile/`,
-which is gitignored. If `profile/` is missing, stop and tell the operator to run
+The operator's own data — identity, résumé bullets, application answers — lives in `profile/`.
+If `profile/` is missing, stop and tell the operator to run
 `cp -r profile.example profile` and fill it in. Never read resume content from `profile.example/`;
 it describes a fictional person.
